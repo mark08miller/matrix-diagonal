@@ -4,29 +4,30 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        int[][] matrix = {{0, 1, 2}, {4, 5, 6}, {1, 1, 1}};
-        int[] result = getDiagonal(matrix);
-        System.out.println(Arrays.toString(result));
-        /*
-         0 1 2
-         4 5 6
-         1 1 1
-         */
 
     }
-
-    public static int[] getDiagonal(int[][] matrix) {
+    public int[] getDiagonal(int[][] matrix) {
+        if (matrix.length == 0) {
+            return null;
+        }
         int returned[] = new int[matrix.length];
-        int count = 0;
         for (int i = 0; i < returned.length; i++) {
-            for (int j = 0; i < matrix[i].length; i++) {
-                returned[i] += matrix[count][i];
-                count++;
-                break;
-            }
-
+            returned[i] = matrix[i][i];
         }
         return returned;
 
     }
+
+    public int[] getCounterDiagonal(int[][] matrix) {
+        if (matrix.length == 0) {
+            return null;
+        }
+        int matrix1[] = new int[matrix.length];
+        for (int i = 0; i < matrix.length; i++) {
+            matrix1[i] += matrix[i][matrix1.length - i - 1];
+        }
+        return matrix1;
+
+    }
 }
+
